@@ -17,7 +17,7 @@
 ### Prerequisites
 Make sure you have **Python 3.x** installed on your system.
 
-You can download and install Python from [python.org](https://www.python.org/).
+You can download and install Python from [![DOWNLOAD HEAR](https://img.shields.io/badge/PYTHON-DOWNLOAD-blue.svg)](https://www.python.org/downloads/)
 
 ### Install Dependencies
 To install the required Python libraries, run the following command:
