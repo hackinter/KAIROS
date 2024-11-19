@@ -107,10 +107,8 @@ For any queries or issues, feel free to reach out to us:
 
 ## Disclaimer ⚠️
 
-The tool **Kairos** is designed for educational purposes and for legitimate security testing only. **It is strictly prohibited to use this tool for illegal activities, unauthorized access, or any form of malicious intent.**
+The tool **Kairos** is designed for educational purposes and legitimate security testing only. **Using this tool for illegal activities, unauthorized access, or malicious intent is strictly prohibited.**
 
 By using this tool, you agree to comply with all local laws and regulations regarding cybersecurity, and you are solely responsible for your actions. The creators of this tool do not take any responsibility for any misuse or damage caused by the tool.
 
 
----
-> "Tools are only as powerful as their users, let’s discover new possibilities!" - Hackinter
