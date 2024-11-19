@@ -2,31 +2,32 @@
 [![Version](https://img.shields.io/badge/Version-1.0.0-blue.svg)](https://github.com/hackinter/Archer/releases)
 [![GitHub](https://img.shields.io/badge/GITHUB-HACKINTER-red.svg)](https://github.com/hackinter)
 
-**Kairos** is a powerful tool designed to extract parameters from URLs or subdomains. It can process both individual URLs and a list of URLs from a file. This tool is useful for web security assessments, bug bounty hunting, and gathering parameter information from websites.
+**Kairos** is a powerful and advanced tool designed to extract parameters from URLs or subdomains. Whether you need to extract parameters from a single URL or bulk URLs from a file, Kairos provides you with an efficient, multi-threaded solution for fast web security assessments, bug bounty hunting, and web scraping tasks.
 
 ## Features
-- Extracts parameters from URLs or subdomains.
-- Supports both individual URLs and bulk URLs from a file.
-- Multi-threading for faster processing.
-- Custom header support for advanced requests.
-- Output unique parameters in a text file.
-- Works well for penetration testing and security audits.
+
+- Extracts query parameters from individual URLs or bulk URLs from a file.
+- Supports multi-threaded processing for faster extraction.
+- Handles both GET parameters and POST-based data.
+- Custom HTTP headers support for bypassing certain security measures.
+- Saves unique parameters into a file for later analysis.
+- Useful for penetration testing, security audits, and bug bounty hunting.
 
 ## Installation
 
 ### Prerequisites
-Make sure you have **Python 3.x** installed on your system.
+Ensure you have **Python 3.x** installed on your system. If not, download and install Python from the official site:
 
-You can download and install Python from [![DOWNLOAD HEAR](https://img.shields.io/badge/PYTHON-DOWNLOAD-blue.svg)](https://www.python.org/downloads/)
+[![Python Download](https://img.shields.io/badge/PYTHON-DOWNLOAD-blue.svg)](https://www.python.org/downloads/)
 
 ### Install Dependencies
-To install the required Python libraries, run the following command:
+Before running the tool, install the required dependencies using the following command:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-This will install the necessary dependencies such as `requests` and `beautifulsoup4`.
+This will install the required libraries such as `requests`, `beautifulsoup4`, and others for the tool to work seamlessly.
 
 ## Usage
 
@@ -37,46 +38,69 @@ To process a file containing a list of URLs or subdomains, use the following com
 python kairos.py -i subdomains.txt -o parameters.txt
 ```
 
-This will extract parameters from all the URLs listed in `subdomains.txt` and save them into `parameters.txt`.
+This command extracts parameters from all the URLs listed in `subdomains.txt` and saves them into `parameters.txt`.
 
 ### Process a single URL:
-If you want to process a single URL, use the `-u` flag like this:
+To process a single URL, use the `-u` flag as shown below:
 
 ```bash
 python kairos.py -u "http://example.com?query=123&token=xyz" -o parameters.txt
 ```
 
-This will extract parameters from the given URL and save them in `parameters.txt`.
+This will extract parameters from the given URL and save them into `parameters.txt`.
 
 ### Use Custom Headers:
-You can specify custom headers for the HTTP requests using the `--headers` flag. For example:
+Specify custom headers for the HTTP requests with the `--headers` flag. For example:
 
 ```bash
 python kairos.py -i subdomains.txt -o parameters.txt --headers '{"User-Agent": "Mozilla/5.0"}'
 ```
 
-### Use Multi-threading for Faster Processing:
-To speed up the processing, you can specify the number of threads using the `-t` flag. For example:
+### Multi-threading for Faster Processing:
+Use the `-t` flag to increase the number of threads, speeding up the processing. For example, to use 10 threads:
 
 ```bash
 python kairos.py -i subdomains.txt -o parameters.txt -t 10
 ```
 
-This will use 10 threads for processing the file, making it faster.
+### Displaying Help:
+To get more details about the usage and available options, use the `-h` flag:
+
+```bash
+python kairos.py -h
+```
 
 ## Output
-The tool will output the unique parameters extracted from the URLs into a text file (`parameters.txt` in the above examples). You can review the file for the list of parameters.
+The tool will output the unique parameters extracted from the URLs into a text file (default is `parameters.txt`). This file will contain a list of all the unique parameters extracted from the URLs or subdomains.
+
+## Example Output:
+```
+query
+token
+id
+page
+user
+```
 
 ## License
-This project is licensed under the MIT License - see the [![LICENSE](https://img.shields.io/badge/LICENSE-gry.svg)](https://github.com/hackinter/kairos//blob/main/LICENSE)file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/hackinter/kairos/blob/main/LICENSE) file for more details.
 
 ## Contributing
-Feel free to fork the repository and submit pull requests for any improvements. If you encounter any bugs or have suggestions, please open an issue.
+We welcome contributions! If you would like to contribute, feel free to fork the repository and submit a pull request. If you encounter any bugs or have suggestions, please open an issue.
 
 ## Contact
-For any queries or issues, please contact 
+For any queries or issues, feel free to reach out to us:
 
+[![Email](https://img.shields.io/badge/HACKINTER-MAIL-red.svg)](mailto:ceh.ec.counselor147@gmail.com)  
+[![Telegram](https://img.shields.io/badge/HACKINTER-T.ME-blue.svg)](https://t.me/chat_with_hackinter_bot)  
+[![Twitter](https://img.shields.io/badge/HACKINTER-TWITTER-gray.svg)](https://x.com/_anonix_z)
 
-[![HACKINTER](https://img.shields.io/badge/HACKINTER-MAIL-red.svg)](mailto:ceh.ec.counselor147@gmail.com) 
-[![TELEGRAM](https://img.shields.io/badge/HACKINTER-T.ME-blue.svg)](https://t.me/chat_with_hackinter_bot)
-[![TWITTER](https://img.shields.io/badge/HACKINTER-TWITTER-gry.svg)](https://x.com/_anonix_z)
+---
+
+### Project Contributors
+
+- **Kairos Team**  
+  Special thanks to contributors who help us make the tool better!
+
+---
+> "Tools are only as powerful as their users, let’s discover new possibilities!" - Hackinter
