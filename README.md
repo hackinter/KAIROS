@@ -83,7 +83,7 @@ user
 ```
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/hackinter/kairos/blob/main/LICENSE) file for more details.
+This project is licensed under the MIT License. See the [![LICENSE](https://img.shields.io/badge/LICENSE-gry.svg)](https://github.com/hackinter/kairos//blob/main/LICENSE) file for more details.
 
 ## Contributing
 We welcome contributions! If you would like to contribute, feel free to fork the repository and submit a pull request. If you encounter any bugs or have suggestions, please open an issue.
