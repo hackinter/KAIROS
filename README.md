@@ -68,7 +68,7 @@ This will use 10 threads for processing the file, making it faster.
 The tool will output the unique parameters extracted from the URLs into a text file (`parameters.txt` in the above examples). You can review the file for the list of parameters.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [![LICENSE](https://img.shields.io/badge/LICENSE-red.svg)](https://github.com/hackinter/kairos//blob/main/LICENSE)(LICENSE) file for details.
 
 ## Contributing
 Feel free to fork the repository and submit pull requests for any improvements. If you encounter any bugs or have suggestions, please open an issue.
