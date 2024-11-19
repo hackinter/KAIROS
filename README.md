@@ -99,7 +99,7 @@ For any queries or issues, feel free to reach out to us:
 
 ### Project Contributors 👥
 
-- **Kairos Team**  
+- **HACKINTER**  
   Special thanks to contributors who help us make the tool better!
 
 ---
