@@ -4,6 +4,7 @@ import requests
 from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import urljoin, urlparse
 from bs4 import BeautifulSoup
+import json
 
 # ASCII Art
 def print_ascii_art():
@@ -17,12 +18,13 @@ Parameter Finder Tool v1.0
 """
     print(art)
 
-# Extract parameters from a URL
+# Extract parameters from a URL using a more comprehensive approach
 def extract_parameters(url):
-    """Extracts parameters from a single URL."""
+    """Extracts parameters from a single URL using a more comprehensive approach."""
     try:
-        parameters = re.findall(r'[?&](\w+)=', url)
-        return parameters
+        # Capture parameters after '?' or '&' in the URL, including values
+        parameters = re.findall(r'[?&](\w+)=([^&]*)', url)
+        return [param[0] for param in parameters]
     except Exception as e:
         print(f"Error extracting parameters from {url}: {e}")
         return []
@@ -47,7 +49,9 @@ def process_urls(urls, headers=None):
             print(f"Processing: {url}")
             links = fetch_links(url, headers)
             for link in links:
-                yield extract_parameters(link)
+                params = extract_parameters(link)
+                if params:
+                    yield link, params
         except Exception as e:
             print(f"Error processing {url}: {e}")
 
@@ -58,11 +62,10 @@ def read_input_file(file_name):
         return f.read().splitlines()
 
 # Save parameters to a file
-def save_parameters(file_name, parameters):
-    """Saves unique parameters to a file."""
+def save_parameters(file_name, parameter_data):
+    """Saves parameters with URLs to a file in JSON format."""
     with open(file_name, 'w') as f:
-        for param in sorted(set(parameters)):
-            f.write(param + '\n')
+        json.dump(parameter_data, f, indent=4)
 
 # Main function
 if __name__ == "__main__":
@@ -76,7 +79,7 @@ if __name__ == "__main__":
 
     parser.add_argument("-i", "--input", help="Input file containing URLs or subdomains")
     parser.add_argument("-u", "--url", help="Single URL to process directly")
-    parser.add_argument("-o", "--output", default="parameters.txt", help="Output file (default: parameters.txt)")
+    parser.add_argument("-o", "--output", default="parameters.json", help="Output file (default: parameters.json)")
     parser.add_argument("-t", "--threads", type=int, default=5, help="Number of threads for processing (default: 5)")
     parser.add_argument("--headers", help="Custom headers for requests (JSON format)")
 
@@ -86,7 +89,7 @@ if __name__ == "__main__":
     headers = None
     if args.headers:
         try:
-            headers = eval(args.headers)
+            headers = json.loads(args.headers)
         except Exception as e:
             print(f"Error parsing headers: {e}")
             exit(1)
@@ -103,12 +106,12 @@ if __name__ == "__main__":
     # Multi-threading for URL processing
     all_parameters = []
     with ThreadPoolExecutor(max_workers=args.threads) as executor:
-        for params in executor.map(lambda u: list(process_urls([u], headers)), urls):
-            for param_set in params:
-                all_parameters.extend(param_set)
+        for url, params in executor.map(lambda u: list(process_urls([u], headers)), urls):
+            if params:
+                all_parameters.append({"url": url, "parameters": params})
 
-    # Save unique parameters
+    # Save parameters along with URLs in JSON format
     save_parameters(args.output, all_parameters)
 
-    print(f"\nExtracted {len(set(all_parameters))} unique parameters.")
+    print(f"\nExtracted {len(all_parameters)} unique URLs with parameters.")
     print(f"Saved to {args.output}")
